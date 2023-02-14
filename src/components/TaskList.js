@@ -2,10 +2,21 @@ import React from "react";
 import Task from "./Task";
 
 const TaskList = (props) => {
-  const tasks = props.tasks.map((tasks) => (
+  const active = props.tasks.filter((task) => task.active);
+  const done = props.tasks.filter((task) => !task.active);
+  console.log(active, done);
+  const activeTasks = active.map((task) => (
     <Task
-      key={tasks.id}
-      task={tasks}
+      key={task.id}
+      task={task}
+      delete={props.delete}
+      change={props.change}
+    />
+  ));
+  const doneTasks = done.map((task) => (
+    <Task
+      key={task.id}
+      task={task}
       delete={props.delete}
       change={props.change}
     />
@@ -15,12 +26,13 @@ const TaskList = (props) => {
     <>
       <div className="active">
         <h1>Zadania do zrobienia </h1>
-        {tasks}
+        {activeTasks}
       </div>
       <hr />
 
       <div className="done">
-        <h3>Zadania do Zrobione(0)</h3>
+        <h3>Zadania Zrobione</h3>
+        {doneTasks}
       </div>
     </>
   );
