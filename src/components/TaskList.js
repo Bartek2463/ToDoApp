@@ -34,9 +34,9 @@ const TaskList = (props) => {
         <h3>
           Zadania Zrobione <em>({done.length})</em>
         </h3>
-        {done.length > 3 && (
-          <span style={{ fontSize: "10" }}>
-            wyswietlonych jest jedynie 3 ostatnich elementów
+        {done.length >= 4 && (
+          <span style={{ fontSize: 15 }}>
+            wyswietlonych jest jedynie 4 ostatnich elementów
           </span>
         )}
         {doneTasks.slice(0, 4)}
