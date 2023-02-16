@@ -26,13 +26,20 @@ const TaskList = (props) => {
     <>
       <div className="active">
         <h1>Zadania do zrobienia </h1>
-        {activeTasks}
+        {activeTasks.length > 0 ? activeTasks : <p>brak zadan dla Ciebie</p>}
       </div>
       <hr />
 
       <div className="done">
-        <h3>Zadania Zrobione</h3>
-        {doneTasks}
+        <h3>
+          Zadania Zrobione <em>({done.length})</em>
+        </h3>
+        {done.length > 3 && (
+          <span style={{ fontSize: "10" }}>
+            wyswietlonych jest jedynie 3 ostatnich elementów
+          </span>
+        )}
+        {doneTasks.slice(0, 4)}
       </div>
     </>
   );
