@@ -26,6 +26,14 @@ class AddTask extends Component {
   };
   handleClick = () => {
     console.log("dodaj");
+    const add = this.props.add();
+    if (add) {
+      this.setState = {
+        text: "l",
+        checked: false,
+        date: this.minDate,
+      };
+    }
   };
   render() {
     let maxDate = this.minDate.slice(0, 4) * 1 + 1;
