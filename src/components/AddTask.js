@@ -25,14 +25,18 @@ class AddTask extends Component {
     });
   };
   handleClick = () => {
-    console.log("dodaj");
-    const add = this.props.add();
-    if (add) {
-      this.setState = {
-        text: "l",
-        checked: false,
-        date: this.minDate,
-      };
+    const { text, checked, date } = this.state;
+    if (text.length > 2) {
+      const add = this.props.add(text, date, checked);
+      if (add) {
+        this.setState({
+          text: "",
+          checked: false,
+          date: this.minDate,
+        });
+      }
+    } else {
+      alert("za krótko");
     }
   };
   render() {
